@@ -1,0 +1,764 @@
+@prefix : <>
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix gn: <http://www.geonames.org/> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+
+##Class
+
+crm:E39_Actor a owl:Class ;
+    skos:prefLabel "Actor"@en.
+
+crm:E74_Group a owl:Class ;
+    skos:prefLabel "Group"@en ;
+    rdfs:subClassOf crm:E39_Actor .
+
+crm:E21_Person a owl:Class ;
+    skos:prefLabel "Group"@en ;
+    rdfs:subClassOf crm:E39_Actor .
+
+crm:E5_Event a owl:Class ;
+    skos:prefLabel "Event"@en .
+
+crm:E7_Activity a owl:Class ;
+    skos:prefLabel "Activity"@en ;
+    rdfs:subClassOf crm:E5_Event .
+
+crm:E63_Beginning_of_Existence a owl:Class ;
+    skos:prefLabel "Beginning of Existence"@en ;
+    rdfs:subClassOf crm:E5_Event .
+
+crm:E64_End_of_Existence a owl:Class ;
+    skos:prefLabel "End of Existence"@en ;
+    rdfs:subClassOf crm:E5_Event .
+
+crm:E65_Creation a owl:Class ;
+    skos:prefLabel "Creation"@en ;
+    rdfs:subClassOf crm:E63_Beginning_of_Existence .
+
+crm:E12_Production a owl:Class ;
+    skos:prefLabel "Production"@en ;
+    rdfs:subClassOf crm:E63_Beginning_of_Existence .
+
+crm:E86_Leaving a owl:Class ;
+    skos:prefLabel "Leaving"@en ;
+    rdfs:subClassOf crm:E7_Activity .
+
+crm:E85_Joining a owl:Class ;
+    skos:prefLabel "Joining"@en ;
+    rdfs:subClassOf crm:E7_Activity .
+
+crm:E9_Move a owl:Class ;
+    skos:prefLabel "Move" ;
+    rdfs:subClassOf crm:E7_Activity .
+
+crm:E66_Formation a owl:Class ;
+    skos:prefLabel "Formation" ;
+    rdfs:subClassOf crm:E7_Activity ;
+    rdfs:subClassOf crm:E63_Beginning_of_Existence .
+
+crm:E68_Dissolution a owl:Class ;
+    skos:prefLabel "Dissolution" ;
+    rdfs:subClassOf crm:E64_End_of_Existence .
+
+crm:E69_Death a owl:Class ;
+    skos:prefLabel "Death" ;
+    rdfs:subClassOf crm:E64_End_of_Existence .
+
+crm:E67_Birth a owl:Class ;
+    skos:prefLabel "Birth" ;
+    rdfs:subClassOf crm:E63_Beginning_of_Existence .
+
+crm:E55_Type a owl:Class ;
+    skos:prefLabel "Type"@en .
+
+crm:E22_Man-Made_Object a owl:Class ;
+    skos:prefLabel "Man Made Object"@en .
+
+crm:E73_Information_Object a owl:Class ;
+    skos:prefLabel "Information Object"@en .
+
+crm:E31_Document a owl:Class ;
+    skos:prefLabel "Document"@en ;
+    rdfs:subClassOf crm:E73_Information_Object .
+
+crm:E38_Image a owl:Class ;
+    skos:prefLabel "Image"@en ;
+    rdfs:subClassOf crm:E73_Information_Object .
+
+crm:E53_Place a owl:Class ;
+    skos:prefLabel "Place"@en .
+
+crm:E52_Time-Span a owl:Class ;
+    skos:prefLabel "Time Span"@en .
+
+:Event a owl:Class ;
+    skos:prefLabel "Event" ;
+    rdfs:subClassOf crm:E5_Event .
+
+:Activity a owl:Class ;
+    skos:prefLabel "Activity" ;
+    rdfs:subClassOf crm:E7_Activity .
+
+:UnitActivity a owl:Class ;
+    skos:prefLabel "Unit Activity" ;
+    rdfs:subClassOf :Activity .
+
+:PersonActivity a owl:Class ;
+    skos:prefLabel "Person Activity" ;
+    rdfs:subClassOf :Activity .
+
+:Announcement a owl:Class ;
+    skos:prefLabel "Announcement" ;
+    rdfs:subClassOf :Activity .
+    
+:ConferenceConvening a owl:Class ;
+    skos:prefLabel "Conference Convening" ;
+    rdfs:subClassOf :Activity .
+
+:Creation a owl:Class ;
+    skos:prefLabel "Creation" ;
+    rdfs:subClassOf crm:E65_Creation ;
+    rdfs:subClassOf :Activity .
+
+:Production a owl:Class ;
+    skos:prefLabel "Production" ;
+    rdfs:subClassOf crm:E12_Production ;
+    rdfs:subClassOf :Activity .
+    
+:Graduation a owl:Class ;
+    skos:prefLabel "Graduation" ;
+    rdfs:subClassOf :PersonActivity .
+
+:MedalAwarding a owl:Class ;
+    skos:prefLabel "Award Medal" ;
+    rdfs:subClassOf :PersonActivity .
+
+:Promotion a owl:Class ;
+    skos:prefLabel "Promotion" ;
+    rdfs:subClassOf :PersonActivity .
+
+:PersonLeaving a owl:Class ;
+    skos:prefLabel "Person Leaving" ;
+    rdfs:subClassOf :PersonActivity ;
+    rdfs:subClassOf crm:E86_Leaving .
+
+:PersonJoining a owl:Class ;
+    skos:prefLabel "Person Joining" ;
+    rdfs:subClassOf crm:E85_Joining ;
+    rdfs:subClassOf :PersonActivity .
+    
+:Battle a owl:Class ;
+    skos:prefLabel "Battle" ;
+    rdfs:subClassOf :UnitActivity .
+
+:SocialMovement a owl:Class ;
+    skos:prefLabel "Social Movement" ;
+    rdfs:subClassOf :UnitActivity .
+
+:Massacre a owl:Class ;
+    skos:prefLabel "Massacre" ;
+    rdfs:subClassOf :UnitActivity .
+
+:Bombardment a owl:Class ;
+    skos:prefLabel "Bombardment" ;
+    rdfs:subClassOf :UnitActivity .
+    
+:UnitJoining a owl:Class ;
+    skos:prefLabel "Unit Joining" ;
+    rdfs:subClassOf :UnitActivity ;
+    rdfs:subClassOf crm:E85_Joining .
+
+:UnitMoving a owl:Class ;
+    skos:prefLabel "Unit Moving" ;
+    rdfs:subClassOf :UnitActivity ;
+    rdfs:subClassOf crm:E9_Move .
+
+:UnitFormation a owl:Class ;
+    skos:prefLabel "Unit Formation" ;
+    rdfs:subClassOf :UnitActivity ;
+    rdfs:subClassOf crm:E66_Formation .
+
+:UnitRenaming a owl:Class ;
+    skos:prefLabel "Unit REnaming" ;
+    rdfs:subClassOf :UnitActivity ;
+    rdfs:subClassOf crm:E66_Formation .
+
+:Dissolution a owl:Class ;
+    skos:prefLabel "Unit Dissolution" ;
+    rdfs:subClassOf :UnitActivity ;
+    rdfs:subClassOf crm:E68_Dissolution .
+    
+:Death a owl:Class ;
+    skos:prefLabel "Death" ;
+    rdfs:subClassOf :Event ;
+    rdfs:subClassOf crm:E64_End_of_Existence;
+    rdfs:subClassOf crm:E69_Death .
+
+:Birth a owl:Class ;
+    skos:prefLabel "Birth" ;
+    rdfs:subClassOf :Event ;
+    rdfs:subClassOf crm:E67_Birth .
+
+:Wounding a owl:Class ;
+    skos:prefLabel "Wounding" ;
+    rdfs:subClassOf :Event .
+
+:Capture a owl:Class ;
+    skos:prefLabel "Capture" ;
+    rdfs:subClassOf :Event .
+
+:MilitaryRank a owl:Class ;
+    skos:prefLabel "军衔"@zh, "軍隊の階級"@ja, "Military Rank"@en ;
+    rdfs:subClassOf crm:E55_Type .
+
+:Role a owl:Class ;
+    skos:prefLabel "职务"@zh, "職務"@ja, "Role"@en ;
+    rdfs:subClassOf crm:E55_Type .
+
+:Profession a owl:Class ;
+    skos:prefLabel "职业"@zh, "職業"@ja ;
+    rdfs:subClassOf crm:E55_Type .
+
+:MilitarySpecialization a owl:Class ;
+    skos:prefLabel "军事类别"@zh, "軍事専門"@ja, "Military Specialization"@en ;
+    rdfs:subClassOf crm:E55_Type .
+
+:Medal a owl:Class ;
+    skos:prefLabel "勋章"@zh, "勲章"@ja, "Medal"@en ;
+    rdfs:subClassOf crm:E22_Man-Made_Object .
+
+:Article a owl:Class ;
+    skos:prefLabel "Article" ;
+    rdfs:subClassOf crm:E31_Document .
+
+:Video a owl:Class ;
+    skos:prefLabel "Video" ;
+    rdfs:subClassOf crm:E31_Document .
+
+:Photograph a owl:Class ;
+    skos:prefLabel "Article" ;
+    rdfs:subClassOf crm:E31_Document ;
+    rdfs:subClassOf crm:E38_Image .
+
+:LiteraryWork a owl:Class ;
+    skos:prefLabel "Literary Work" ;
+    rdfs:subClassOf crm:E73_Information_Object .
+
+:VisualArtWork a owl:Class ;
+    skos:prefLabel "Visual Art Work" ;
+    rdfs:subClassOf crm:E73_Information_Object .
+
+:PerformingArtWork a owl:Class ;
+    skos:prefLabel "Performing Art Work" ;
+    rdfs:subClassOf crm:E73_Information_Object .
+
+:Statement a owl:Class ;
+    skos:prefLabel "Statement" ;
+    rdfs:subClassOf crm:E73_Information_Object .
+
+:Group a owl:Class ;
+    skos:prefLabel "Group" ;
+    rdfs:subClassOf crm:E74_Group .
+
+:MilitaryUnit a owl:Class ;
+    skos:prefLabel "军事单位"@zh, "Military Unit"@en ;
+    rdfs:subClassOf :Group .
+
+:Army a owl:Class ;
+    skos:prefLabel "陆军"@zh, "Army"@en ;
+    rdfs:subClassOf :MilitaryUnit .
+
+:Navy a owl:Class ;
+    skos:prefLabel "海军"@zh, "Navy"@en ;
+    rdfs:subClassOf :MilitaryUnit .
+
+:AirForce a owl:Class ;
+    skos:prefLabel "空军"@zh, "Air Force"@en ;
+    rdfs:subClassOf :MilitaryUnit .
+    
+:MilitaryRegion a owl:Class ;
+    skos:prefLabel "Military Region" ;
+    rdfs:subClassOf :Army .
+
+:ArmyGroup a owl:Class ;
+    skos:prefLabel "Army Group" ;
+    rdfs:subClassOf :Army .
+
+:FieldArmy a owl:Class ;
+    skos:prefLabel "Field Army" ;
+    rdfs:subClassOf :Army .
+
+:Corp a owl:Class ;
+    skos:prefLabel "Corps" ;
+    rdfs:subClassOf :Army .
+
+:Division a owl:Class ;
+    skos:prefLabel "师"@zh, "師団"@ja, "Division"@en ;
+    rdfs:subClassOf :Army ;
+    org:hasUnit :Brigade, :Regiment, :Battalion ;
+    org:unitOf :FieldArmy, :Corps .
+
+:Brigade a owl:Class ;
+    skos:prefLabel "Brigade" ;
+    rdfs:subClassOf :Army .
+
+:Regiment a owl:Class ;
+    skos:prefLabel "Regiment" ;
+    rdfs:subClassOf :Army .
+
+:Battalion a owl:Class ;
+    skos:prefLabel "Battalion" ;
+    rdfs:subClassOf :Army .
+
+:Company a owl:Class ;
+    skos:prefLabel "Company" ;
+    rdfs:subClassOf :Army .
+
+:Platoon a owl:Class ;
+    skos:prefLabel "Platoon ;
+    rdfs:subClassOf :Army .
+
+:Section a owl:Class ;
+    skos:prefLabel "Section" ;
+    rdfs:subClassOf :Army .
+
+:Squad a owl:Class ;
+    skos:prefLabel "Squad" ;
+    rdfs:subClassOf :Army .
+
+:Fireteam a owl:Class ;
+    skos:prefLabel "Fireteam" ;
+    rdfs:subClassOf :Army .
+
+:CombinedFleet a owl:Class ;
+    skos:prefLabel "Combined Fleet" ;
+    rdfs:subClassOf :Navy .
+
+:CombinedFleet a owl:Class ;
+    skos:prefLabel "Combined Fleet" ;
+    rdfs:subClassOf :Navy .
+
+:AreaFleet a owl:Class ;
+    skos:prefLabel "Area Fleet" ;
+    rdfs:subClassOf :Navy .
+
+:Fleet a owl:Class ;
+    skos:prefLabel "Fleet" ;
+    rdfs:subClassOf :Navy .
+
+:Flotilla a owl:Class ;
+    skos:prefLabel "Flotilla" ;
+    rdfs:subClassOf :Navy .
+
+:Squadron a owl:Class ;
+    skos:prefLabel "Squadron" ;
+    rdfs:subClassOf :Navy .
+
+:BaseForce a owl:Class ;
+    skos:prefLabel "Base Force" ;
+    rdfs:subClassOf :Navy .
+
+:AirGroup a owl:Class ;
+    skos:prefLabel "Air Group" ;
+    rdfs:subClassOf :AirForce .
+
+:Wing a owl:Class ;
+    skos:prefLabel "Wing" ;
+    rdfs:subClassOf :AirForce .
+
+:AirSquadron a owl:Class ;
+    skos:prefLabel "Air Squadron" ;
+    rdfs:subClassOf :AirForce .
+
+:Flight a owl:Class ;
+    skos:prefLabel "Flight" ;
+    rdfs:subClassOf :AirForce .
+
+:AirSection a owl:Class ;
+    skos:prefLabel "Air Section" ;
+    rdfs:subClassOf :AirForce .
+
+:Person a owl:Class ;
+    skos:prefLabel "Person" ;
+    rdfs:subClassOf crm:E21_Person .
+
+:Place a owl:Class ;
+    skos:prefLabel "Place" ;
+    rdfs:subClassOf crm:E53_Place .
+
+:IndependentPoliticalEntity a owl:Class ;
+    rdfs:subClassOf :Place ;
+    owl:equivalentClass gn:A.PCLI .
+
+:FirstOrderAdministrativeDivision a owl:Class ;
+    skos:definition "直辖市,省,自治区,特别行政区等一级行政区划"@zh, "都,道,府,県などの第1レベルの行政区画"@ja, "the principal administrative division of a country"@en ;
+    rdfs:subClassOf :Place ;
+    owl:equivalentClass gn:A.ADM1 .
+
+:SecondOrderAdministrativeDivision a owl:Class ;
+    rdfs:subClassOf :Place ;
+    owl:equivalentClass gn:A.ADM2 .
+
+:ThirdOrderAdministrativeDivision a owl:Class ;
+    rdfs:subClassOf :Place ;
+    owl:equivalentClass gn:A.ADM3 .
+
+:ForthOrderAdministrativeDivision a owl:Class ;
+    rdfs:subClassOf :Place ;
+    owl:equivalentClass gn:A.ADM4 .
+
+:HistoricalAdministrativeDivision a owl:Class ;
+    rdfs:subClassOf :Place ;
+    owl:equivalentClass gn:A.ADMH .
+
+##Properties
+
+crm:P152_has_parent(:is_parent_of)
+    a rdf:Property ;
+    rdfs:domain :Person ;
+    rdfs:range :Person ;
+    skos:prefLabel "Parent" .
+
+crm:P70_documents(:is_documented_in)
+    a rdf:Property ;
+    rdfs:domain :Document ;
+    rdfs:range crm:E1_CRM_Entity ;
+    skos:prefLabel "Document" .
+
+crm:P7_took_place_at(:witnessed):
+    a rdf:Property ;
+    rdfs:domain :Event ;
+    rdfs:range :Place ;
+    skos:prefLabel "Take place at" .
+
+crm:P4_has_time-span(:is_time-span_of)
+    a rdf:Property ;
+    rdfs:domain :Event ;
+    rdfs:range crm:E52_Time-Span ;
+    skos:prefLabel "Has time span" .
+
+crm:P183_ends_before_the_start_of(:starts_after_the_end_of)
+    a rdf:Property ;
+    rdfs:domain :Event ;
+    rdfs:range crm:E52_Time-Span ;
+    skos:prefLabel "Ends before the start of" .
+
+crm:P11_had_participant(:participated_in)
+    a rdf:Property ;
+    rdfs:domain :Event ;
+    rdfs:range crm:E39_Actor ;
+    skos:prefLabel "The participant of the event" .
+
+crm:P98_brought_into_life(:was_born)
+    a rdf:Property ;
+    rdfs:domain :Brith ;
+    rdfs:range :Person ;
+    skos:prefLabel "Give birth to a person" .
+
+crm:P96_by_mother(:gave_birth)
+    a rdf:Property ;
+    rdfs:domain :Birth ;
+    rdfs:range :Person ;
+    skos:prefLabel "Mother of a person" .
+
+crm:P97_from_father(:was_father_for)
+    a rdf:Property ;
+    rdfs:domain :Birth ;
+    rdfs:range :Person ;
+    skos:prefLabel "Father of a person" .
+
+crm:P100_was_death_of(:died_in)
+    a rdf:Property ;
+    rdfs:domain :Death ;
+    rdfs:range :Person ;
+    rdfs:subPropertyOf crm:P11_had_participant(:participated_in) ;
+    skos:prefLabel "Death of a Person" .
+
+crm:P94_has_created(:was_created_by)
+    a rdf:Property ;
+    rdfs:domain :Creation ;
+    rdfs:range crm:E73_Information_Object ;
+    skos:prefLabel "Objects created in the creation event" .
+
+crm:P95_has_formed(:was_formed_by)
+    a rdf:Property ;
+    rdfs:domain :UnitFormation ;
+    rdfs:range :Group ;
+    skos:prefLabel "The group formed in the formation event" .
+
+crm:P151_was_formed_from(:participated_in)
+    a rdf:Property ;
+    rdfs:domain :UnitFormation ;
+    rdfs:range :Group ;
+    skos:prefLabel "The new organization is formed from the existing unit" .
+
+crm:P143_joined(:was_joined_by)
+    a rdf:Property ;
+    rdfs:domain :Joining ;
+    rdfs:range crm:E39_Actor ;
+    rdfs:subPropertyOf crm:P11_had_participated ;
+    skos:prefLabel "The actor joins a group" .
+
+crm:P144_joined_with(:gained_member_by)
+    a rdf:Property ;
+    rdfs:domain :Joining ;
+    rdfs:range crm:E39_Actor ;
+    rdfs:subPropertyOf crm:P11_had_participated ;
+    skos:prefLabel "The group that an actor joins in" .
+
+crm:P25_moved(:moved_by)
+    a rdf:Property ;
+    rdfs:domain :UnitMoving ;
+    rdfs:range :MilitaryUnit ;
+    skos:prefLabel "The unit is moved" .
+
+crm:P26_moved_to(:was_destination_of)
+    a rdf:Property ;
+    rdfs:domain :UnitMoving ;
+    rdfs:range :Place ;
+    skos:prefLabel "The unit is moved to a new place" .
+
+crm:P27_moved_from(:was_origin_of)
+    a rdf:Property ;
+    rdfs:domain :UnitMoving ;
+    rdfs:range :Place ;
+    skos:prefLabel "The unit is moved from the old place" .
+
+crm:P99_dissolved(:was_dissolved_by)
+    a rdf:Property ;
+    rdfs:domain :Dissolution ;
+    rdfs:range :Group ;
+    skos:prefLabel "The group is dissolved" .
+
+:dissolvedBy(:dissolved)
+    a rdf:Property ;
+    rdfs:domain :Dissolution ;
+    rdfs:range :Actor ;
+    skos:prefLabel "The actor dissolved the group" .
+
+:issued(:wasIssuedAt)
+    a rdf:Property ;
+    rdfs:domain :Announcement ;
+    rdfs:range :Statement ;
+    skos:prefLabel "A statement is issued" .
+
+:issuedBy(:participatedIn)
+    a rdf:Property ;
+    rdfs:domain :Announcement ;
+    rdfs:range :Actor ;
+    skos:prefLabel "The actor issued a statement" .
+
+:released(:wasReleasedAt)
+    a rdf:Property ;
+    rdfs:domain :ConferenceConvening ;
+    rdfs:range :Statement ;
+    skos:prefLabel "A statement is released in a conference" .
+
+:joinedFrom(:formerHeld)
+    a rdf:Property ;
+    rdfs:domain :Joining ;
+    rdfs:range :Group ;
+    skos:prefLabel "The former group that an actor was joined" .
+
+:joinedAs(:assignedBy)
+    a rdf:Property ;
+    rdfs:domain :PersonJoining ;
+    rdfs:range :Role ;
+    skos:prefLabel "The role that a person is assigned in a new group" .
+
+:renamedAs(:generatedFrom)
+    a rdf:Property ;
+    rdfs:domain :UnitRenaming ;
+    rdfs:range :Group ;
+    skos:prefLabel "The new renamed group" .
+
+:hasRenamed(:wasRenamedBy)
+    a rdf:Property ;
+    rdfs:domain :UnitRenaming ;
+    rdfs:range :Group ;
+    skos:prefLabel "A unit is renamed" .
+
+:hasCreator(:isCreatorOf)
+    a rdf:Property ;
+    rdfs:domain :Creation ;
+    rdfs:range :Actor ;
+    skos:prefLabel "The Actor that creates the object" .
+
+:killed_by(:killed) 
+    a rdf:Property ;
+    rdfs:domain :Death ;
+    rdfs:range crm:E77_Persistent_Item ;
+    skos:prefLabel "A person is killed by an item" .
+
+:graduatedFrom(:gainedStudentBy) 
+    a rdf:Property ;
+    rdfs:domain :Graduation ;
+    rdfs:range :Group ;
+    skos:prefLabel "The organization a person graduated from" .
+
+:graduated(:graduatedIn) 
+    a rdf:Property ;
+    rdfs:domain :Graduation ;
+    rdfs:range :Person ;
+    skos:prefLabel "The participant of the graduation event" .
+
+:promoted(:wasPromotedBy)
+    a rdf:Property ;
+    rdfs:domain :Promotion ;
+    rdfs:range :Person ;
+    skos:prefLabel "A person is promoted" .
+
+:assignedWith(:wasAssignedTo)
+    a rdf:Property ;
+    rdfs:domain :Promotion ;
+    rdfs:range :Rank ;
+    skos:prefLabel "A person is assigned with a rank" .
+
+:awarded(:wasAwardedBy) 
+    a rdf:Property ;
+    rdfs:domain :MedalAwarding ;
+    rdfs:range :Actor ;
+    skos:prefLabel "An actor is awarded with a medal" .
+
+:awardedWith(:wasAwardedTo) 
+    a rdf:Property ;
+    rdfs:domain :MedalAwarding ;
+    rdfs:range :Medal;
+    skos:prefLabel "The medal an actor is awarded with" .
+
+foaf:name 
+    a rdf:Property ;
+    rdfs:domain :Person ;
+    rdfs:range rdfs:Literal ;
+    skos:prefLabel "Name" .
+
+foaf:familyName 
+    a rdf:Property ;
+    rdfs:domain :Person ;
+    rdfs:range rdfs:Literal ;
+    skos:prefLabel "Family Name" .
+
+foaf:firstName 
+    a rdf:Property ;
+    rdfs:domain :Person ;
+    rdfs:range rdfs:Literal ;
+    skos:prefLabel "First Name" .
+
+:formerName 
+    a rdf:Property ;
+    rdfs:domain :Person ;
+    rdfs:range rdfs:Literal ;
+    skos:prefLabel "Former Name" .
+
+:courtesyName 
+    a rdf:Property ;
+    rdfs:domain :Person ;
+    rdfs:range rdfs:Literal ;
+    skos:prefLabel "Courtesy Name" .
+
+:artName 
+    a rdf:Property ;
+    rdfs:domain :Person ;
+    rdfs:range rdfs:Literal ;
+    skos:prefLabel "Art Name" .
+
+:ethnicity 
+    a rdf:Property ;
+    rdfs:domain :Person ;
+    rdfs:range rdfs:Literal ;
+    skos:prefLabel "Ethnicity" .
+
+:religion 
+    a rdf:Property ;
+    rdfs:domain :Person ;
+    rdfs:range rdfs:Literal ;
+    skos:prefLabel "Religion" .
+
+:branchOfService 
+    a rdf:Property ;
+    rdfs:domain :Person ;
+    rdfs:range :Group ;
+    skos:prefLabel "Branch of Service" .
+
+dbo:nationality 
+    a rdf:Property ;
+    rdfs:domain :Person ;
+    rdfs:range :IndependentPoliticalEntity ;
+    skos:prefLabel "Nationality" .
+
+:hasRank 
+    a rdf:Property ;
+    rdfs:domain :Person ;
+    rdfs:range :Rank ;
+    skos:prefLabel "Nationality" .
+
+:hasProfession 
+    a rdf:Property ;
+    rdfs:domain :Person ;
+    rdfs:range :Profession ;
+    skos:prefLabel "Profession" .
+
+:hasMedal 
+    a rdf:Property ;
+    rdfs:domain :Person ;
+    rdfs:range :Medal ;
+    skos:prefLabel "Medal" .
+
+:unitCode 
+    a rdf:Property ;
+    rdfs:domain :MilitaryUnit ;
+    rdfs:range rdfs:Literal ;
+    skos:prefLabel "Unit Code" .
+
+:country 
+    a rdf:Property ;
+    rdfs:domain :MilitaryUnit ;
+    rdfs:range :IndependnetPoliticalEntity ;
+    skos:prefLabel "Country" .
+
+:branch 
+    a rdf:Property ;
+    rdfs:domain :MilitaryUnit ;
+    rdfs:range rdfs:MilitaryUnit ;
+    skos:prefLabel "Branch" .
+
+:specialization 
+    a rdf:Property ;
+    rdfs:domain :MilitaryUnit ;
+    rdfs:range :MilitaryUnit ;
+    skos:prefLabel "Specialization of a Military Unit" .
+
+:garrison 
+    a rdf:Property ;
+    rdfs:domain :MilitaryUnit ;
+    rdfs:range :Place ;
+    skos:prefLabel "Garrison" .
+
+:size 
+    a rdf:Property ;
+    rdfs:domain :MilitaryUnit ;
+    rdfs:range rdfs:Integer ;
+    skos:prefLabel "Size of a Military Unit" .
+
+:source 
+    a rdf:Property ;
+    rdfs:domain :Document ;
+    rdfs:range rdfs:Literal ;
+    skos:prefLabel "Source of the Document" .
+
+:alternateName 
+    a rdf:Property ;
+    rdfs:domain :Place ;
+    rdfs:range rdfs:Literal ;
+    skos:prefLabel "Alternate Name of a Place" .
+
+:parentAdministrativeDivision 
+    a rdf:Property ;
+    rdfs:domain :Place ;
+    rdfs:range :Place ;
+    skos:prefLabel "Upper Level Administrative Division of a Place" .
