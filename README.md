@@ -9,7 +9,7 @@ The SSJW Ontology defines the main concepts and properties that are used for the
 The ontology aims to support information retrieval, knowledge graph construction and knowledge reasoning from war-related resources and documents.
 
 The schema of the ontology is the following:
- ![SSJW Ontology modules](/ontology-all.png)
+ ![SSJW Ontology modules](/overview.png)
 
 ### License
 
